@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -23,10 +24,10 @@ const Navbar: React.FC = () => {
   }, [isMobileMenuOpen]);
 
   const links = [
-    { name: 'Work', href: '#work' },
-    { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Work', path: '/' },
+    { name: 'About', path: '/about' },
+    { name: 'Services', path: '/services' },
+    { name: 'Contact', path: '/contact' },
   ];
 
   const handleMobileLinkClick = (
@@ -55,21 +56,24 @@ const Navbar: React.FC = () => {
         }`}
       >
         <div className="flex w-full items-center justify-between">
-          <div className="font-heading relative z-50 cursor-pointer text-xl font-bold uppercase tracking-tighter text-white md:text-2xl">
+          <Link
+            to="/"
+            className="font-heading relative z-50 cursor-pointer text-xl font-bold uppercase tracking-tighter text-white md:text-2xl"
+          >
             Digital<span className="text-red-600">.Illumination</span>
-          </div>
+          </Link>
 
           {/* DESKTOP LINKS (Без промяна) */}
           <div className="hidden space-x-10 md:flex">
             {links.map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
+                to={link.path}
                 className="group relative text-xs font-bold uppercase tracking-[0.2em] text-white transition-colors hover:text-gray-300"
               >
                 {link.name}
                 <span className="absolute -bottom-2 left-0 h-[2px] w-0 bg-red-600 transition-all duration-300 ease-out group-hover:w-full"></span>
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -99,9 +103,9 @@ const Navbar: React.FC = () => {
       >
         <div className="flex flex-col space-y-8 text-center">
           {links.map((link) => (
-            <a
+            <Link
               key={link.name}
-              href={link.href}
+              to={link.path}
               onClick={(e) => handleMobileLinkClick(e, link.href, link.name)} // Тук викаме новата функция
               className={`font-heading relative text-4xl uppercase tracking-wider text-white transition-colors ${activeLink === link.name ? 'text-red-600' : 'hover:text-gray-300'}`}
             >
@@ -111,7 +115,7 @@ const Navbar: React.FC = () => {
               <span
                 className={`absolute -bottom-2 left-0 h-[2px] bg-red-600 transition-all duration-300 ease-out ${activeLink === link.name ? 'w-full' : 'w-0'}`}
               ></span>
-            </a>
+            </Link>
           ))}
         </div>
 

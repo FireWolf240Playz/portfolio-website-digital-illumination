@@ -1,23 +1,49 @@
+// src/App.tsx
+import { useEffect } from 'react';
 import { ReactLenis } from 'lenis/react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useLocation,
+} from 'react-router-dom';
+
 import Navbar from './components/layout/Navbar';
-import Footer from './components/sections/Footer'; // <-- Импорт
-import Hero from './components/sections/Hero';
-import Portfolio from './components/sections/Portfolio';
+import Footer from './components/sections/Footer';
+import Home from './pages/Home';
+import ProjectDetail from './pages/PageDetail.tsx';
+import About from './pages/About.tsx';
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
 
 function App() {
   return (
-    <ReactLenis root options={{ lerp: 0.1, duration: 1.5, smoothWheel: true }}>
-      <Navbar />
+    <Router>
+      <ReactLenis
+        root
+        options={{ lerp: 0.1, duration: 1.5, smoothWheel: true }}
+      >
+        <ScrollToTop />
+        <Navbar />
 
-      <main className="min-h-screen bg-cinema-black">
-        <Hero />
-        <Portfolio />
+        <main className="min-h-screen bg-cinema-black">
+          <Routes>
+            {/* Начална страница */}
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/project/:slug" element={<ProjectDetail />} />
+          </Routes>
+        </main>
 
-        <div className="h-20 bg-cinema-black md:h-40"></div>
-      </main>
-
-      <Footer />
-    </ReactLenis>
+        <Footer />
+      </ReactLenis>
+    </Router>
   );
 }
 

@@ -1,6 +1,8 @@
+// src/components/ui/ProjectCard.tsx
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Link } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,6 +12,7 @@ interface ProjectCardProps {
   image: string;
   videoSrc?: string;
   className?: string;
+  slug: string;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -18,6 +21,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   image,
   videoSrc,
   className,
+  slug,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
@@ -69,8 +73,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   };
 
   return (
-    <div
-      className={`group relative w-full cursor-pointer ${className}`}
+    // <--- ПРОМЯНА: Сменихме div с Link и добавихме 'to'
+    <Link
+      to={`/project/${slug}`}
+      className={`group relative block w-full cursor-pointer ${className}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -102,7 +108,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           )}
         </div>
 
-        {/* 3. OVERLAY  */}
+        {/* 3. OVERLAY */}
         <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/10 transition-all duration-500 group-hover:bg-black/20"></div>
       </div>
 
@@ -127,7 +133,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           </span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
