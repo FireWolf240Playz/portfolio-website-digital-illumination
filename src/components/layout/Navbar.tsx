@@ -24,7 +24,7 @@ const Navbar: React.FC = () => {
   }, [isMobileMenuOpen]);
 
   const links = [
-    { name: 'Work', path: '/' },
+    { name: 'Work', path: '/work' },
     { name: 'About', path: '/about' },
     { name: 'Services', path: '/services' },
     { name: 'Contact', path: '/contact' },
@@ -58,7 +58,7 @@ const Navbar: React.FC = () => {
         <div className="flex w-full items-center justify-between">
           <Link
             to="/"
-            className="font-heading relative z-50 cursor-pointer text-xl font-bold uppercase tracking-tighter text-white md:text-2xl"
+            className="relative z-50 cursor-pointer font-heading text-xl font-bold uppercase tracking-tighter text-white md:text-2xl"
           >
             Digital<span className="text-red-600">.Illumination</span>
           </Link>
@@ -107,7 +107,7 @@ const Navbar: React.FC = () => {
               key={link.name}
               to={link.path}
               onClick={(e) => handleMobileLinkClick(e, link.href, link.name)} // Тук викаме новата функция
-              className={`font-heading relative text-4xl uppercase tracking-wider text-white transition-colors ${activeLink === link.name ? 'text-red-600' : 'hover:text-gray-300'}`}
+              className={`relative font-heading text-4xl uppercase tracking-wider text-white transition-colors ${activeLink === link.name ? 'text-red-600' : 'hover:text-gray-300'}`}
             >
               {link.name}
 

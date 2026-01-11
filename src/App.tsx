@@ -14,6 +14,8 @@ import Home from './pages/Home';
 import ProjectDetail from './pages/PageDetail.tsx';
 import About from './pages/About.tsx';
 
+import Work from './components/sections/Work.tsx';
+
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -38,6 +40,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/project/:slug" element={<ProjectDetail />} />
+            <Route path="/work" element={<Work />} />
           </Routes>
         </main>
 
