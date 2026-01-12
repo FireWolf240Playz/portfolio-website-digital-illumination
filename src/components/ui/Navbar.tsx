@@ -106,7 +106,7 @@ const Navbar: React.FC = () => {
             <Link
               key={link.name}
               to={link.path}
-              onClick={(e) => handleMobileLinkClick(e, link.href, link.name)} // Тук викаме новата функция
+              onClick={(e) => handleMobileLinkClick(e, link.path, link.name)} // Тук викаме новата функция
               className={`relative font-heading text-4xl uppercase tracking-wider text-white transition-colors ${activeLink === link.name ? 'text-red-600' : 'hover:text-gray-300'}`}
             >
               {link.name}
