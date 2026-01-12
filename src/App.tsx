@@ -1,7 +1,12 @@
 // src/App.tsx
 import { useEffect } from 'react';
 import { ReactLenis } from 'lenis/react';
-import { BrowserRouter as Router, Route, Routes, useLocation, } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useLocation,
+} from 'react-router-dom';
 
 import Navbar from './components/ui/Navbar.tsx';
 import Footer from './components/sections/Footer';
